@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .item img {
+            max-width: 100px;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .item p {
+            margin: 0;
+            color: #666;
+        }
+        .item audio {
+            margin-top: 10px;
+        }
+        .item strong {
+            color: #333;
+        }
+        .no-recommendations {
+            color: #888;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .item img {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stress Level: {{ stress_level }}</h1>
+    </header>
+    <div class="container">
+        <div class="section">
+            <h2>Music Recommendations</h2>
+            {% if recommendations.music %}
+                {% for song in recommendations.music %}
+                    <div class="item">
+                        <img src="{{ song.image_url }}" alt="Album Art">
+                        <div>
+                            <p><strong>{{ song.name }}</strong> by {{ song.artist }}</p>
+                            {% if song.preview_url %}
+                                <audio controls>
+                                    <source src="{{ song.preview_url }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            {% else %}
+                                <p>No preview available</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-recommendations">No songs found for the given criteria.</p>
+            {% endif %}
+        </div>
+        <div class="section">
+            <h2>Book Recommendations</h2>
+            {% if recommendations.books %}
+                {% for book in recommendations.books %}
+                    <div class="item">
+                        <img src="{{ book.image_url }}" alt="Book Cover">
+                        <p><strong>{{ book.title }}</strong></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-recommendations">No book recommendations available.</p>
+            {% endif %}
+        </div>
+        <div class="section">
+            <h2>Movie Recommendations</h2>
+            {% if recommendations.movies %}
+                {% for movie in recommendations.movies %}
+                    <div class="item">
+                        <img src="{{ movie.image_url }}" alt="Movie Poster">
+                        <p><strong>{{ movie.title }}</strong></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-recommendations">No movie recommendations available.</p>
+            {% endif %}
+        </div>
+        <div class="section">
+            <h2>Food Recommendations</h2>
+            {% if recommendations.food %}
+                {% for food in recommendations.food %}
+                    <div class="item">
+                        <p>{{ food }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-recommendations">No food recommendations available.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

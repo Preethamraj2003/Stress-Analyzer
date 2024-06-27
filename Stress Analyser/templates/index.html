@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Analysis</title>
+    
+</head>
+<body>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-image: url("../background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ece3e3;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+    <h1 style="color: rgb(22, 12, 12);">Stress Analysis for Students</h1>
+    <form action="/predict" method="POST">
+        
+        <label for="Nervousness">Nervousness:</label>
+        <select id="Nervousness" name="Nervousness" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <label for="Unable to control">Unable to control emotions:</label>
+        <select id="Unable to control" name="Unable to control" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <label for="Worry">Worry:</label>
+        <select id="Worry" name="Worry" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <label for="Trouble in Relaxation">Trouble in Relaxation:</label>
+        <select id="Trouble in Relaxation" name="Trouble in Relaxation" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <label for="Restlessness">Restlessness:</label>
+        <select id="Restlessness" name="Restlessness" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <label for="Irritability">Irritability:</label>
+        <select id="Irritability" name="Irritability" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <label for="Fear">Fear:</label>
+        <select id="Fear" name="Fear" required>
+            <option value = 0>---SELECT---</option>
+            <option value="No">No</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    {% if prediction1 %}
+        <h2>{{ prediction1 }}</h2>
+    {% endif %}
+</body>
+</html>
